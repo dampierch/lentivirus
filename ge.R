@@ -137,6 +137,12 @@ plotCounts(dds, gene=which.min(res$padj), intgroup="condition", main=paste("Coun
 plotCounts(dds, gene=c("ENSG00000196167"), intgroup="condition", main=paste("Counts for", res["ENSG00000196167","symbol"]), col=colors[colData(dds)[,"line"]], cex=2)
 plotCounts(dds, gene=c("ENSG00000214290"), intgroup="condition", main=paste("Counts for", res["ENSG00000214290","symbol"]), col=colors[colData(dds)[,"line"]], cex=2)
 
+## close device to save plots
+dev.off()
+
+
+# revision of plots for top genes/genes of interest
+
 cntData <- plotCounts(dds, gene=c("ENSG00000214290"), intgroup=c("condition","line","side","vector"), returnData=TRUE)
 
 ggplot(cntData, aes(condition, count, color=line, shape=vector)) +
@@ -145,8 +151,4 @@ ggplot(cntData, aes(condition, count, color=line, shape=vector)) +
   theme(plot.title=element_text(hjust=0.5)) +
   ggtitle(paste("Counts for", res["ENSG00000214290","symbol"]))
 
-
 main=paste("Counts for", res["ENSG00000196167","symbol"]), col=colors[colData(dds)[,"line"]], cex=2)
-
-## close device to save plots
-dev.off()
