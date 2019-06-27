@@ -73,6 +73,16 @@ id    218L Par    218L CC1 LV4    218L CC2 LV9    218L SCR LV8    210R Par    21
 ENSG00000196167    204    97    312    172    91    54    102    100    162    151    344    109
 ENSG00000214290    447    196    186    112    71    115    107    158    177    1130    1139    365
 
+## Annotations
+module load anaconda
+python
+import os
+import pandas as pd
+os.chdir("/nv/vol326/cphg_caseylab/FirstExposures/casey_grc_rnaseq_2/")
+ann = pd.read_excel("lookup_casey_grc_rnaseq_2.xlsx")
+os.chdir("/home/chd5n/projects/lentivirus/")
+ann_dict = pd.read_csv("dict.tsv")
+
 ## Code
 ```
 # bash
